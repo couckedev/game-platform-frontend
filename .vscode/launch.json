@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug tmp-dummy with Nx",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "nx", "serve", "tmp-dummy"],
+      "env": {
+        "NODE_OPTIONS": "--inspect=9229"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/tmp-dummy/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug tmp-node-app with Nx",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "nx", "serve", "tmp-node-app"],
+      "env": {
+        "NODE_OPTIONS": "--inspect=9230"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/tmp-node-app/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ]
+    }
+  ]
+}
