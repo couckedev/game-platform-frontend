@@ -1,0 +1,17 @@
+{
+  "name": "player-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/player/ui/src",
+  "projectType": "library",
+  "tags": ["type:ui", "scope:player"],
+  "implicitDependencies": ["player-presentation", "player-application"],
+  "targets": {
+    "test:unit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest run",
+        "cwd": "{projectRoot}"
+      }
+    }
+  }
+}

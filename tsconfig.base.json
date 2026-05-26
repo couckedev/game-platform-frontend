@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "bundler",
+    "target": "ES2023",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "shared-kernels-time": ["./packages/shared/kernels/time/src/index.ts"],
+      "shared-kernels-logging": ["./packages/shared/kernels/logging/src/index.ts"],
+      "player-domain": ["./packages/player/domain/src/index.ts"],
+      "player-application": ["./packages/player/application/src/index.ts"],
+      "player-infrastructure": ["./packages/player/infrastructure/src/index.ts"],
+      "player-presentation": ["./packages/player/presentation/src/index.ts"],
+      "player-ui": ["./packages/player/ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "tmp"]
+}

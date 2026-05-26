@@ -1,0 +1,24 @@
+{
+  "name": "player-presentation",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/player/presentation/src",
+  "projectType": "library",
+  "tags": ["type:presentation", "scope:player"],
+  "implicitDependencies": ["player-application", "player-domain"],
+  "targets": {
+    "test:unit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest run",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/packages/player/presentation"],
+      "options": {
+        "command": "npx tsc -p packages/player/presentation/tsconfig.lib.json"
+      }
+    }
+  }
+}

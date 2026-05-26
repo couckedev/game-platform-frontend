@@ -1,0 +1,139 @@
+name: Build & Publish Docker Images
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      publish_type:
+        description: 'Publish type'
+        required: false
+        type: choice
+        options: [unstable, stable]
+        default: unstable
+      apps:
+        description: 'Apps to publish (JSON array, e.g. ["player-api"])'
+        required: false
+        type: string
+      app:
+        description: 'Publish a single app (name)'
+        required: false
+        type: string
+      force_all:
+        description: 'Publish ALL apps?'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  detect:
+    name: Detect apps & publish type
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.resolve.outputs.apps }}
+      has_apps: ${{ steps.resolve.outputs.has_apps }}
+      publish_type: ${{ steps.type.outputs.publish_type }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Detect publish type
+        id: type
+        run: |
+          if [ -n "${{ inputs.publish_type }}" ]; then
+            TYPE="${{ inputs.publish_type }}"
+          elif [[ "${{ github.event.head_commit.message }}" == "chore: version packages"* ]]; then
+            TYPE="stable"
+          else
+            TYPE="unstable"
+          fi
+          echo "publish_type=$TYPE" >> $GITHUB_OUTPUT
+
+      - name: Resolve apps
+        id: resolve
+        run: |
+          if [ -n "${{ inputs.apps }}" ]; then
+            APPS='${{ inputs.apps }}'
+          elif [ -n "${{ inputs.app }}" ]; then
+            APPS='["${{ inputs.app }}"]'
+          elif [ "${{ inputs.force_all }}" = "true" ]; then
+            APPS=$(pnpm nx show projects --type=app --json 2>/dev/null || echo "[]")
+          else
+            APPS=$(pnpm nx show projects --affected --base=HEAD~1 --head=HEAD --type=app --json 2>/dev/null || echo "[]")
+          fi
+          echo "apps=$(echo $APPS | jq -c '.')" >> $GITHUB_OUTPUT
+          if [ "$(echo $APPS | jq 'length')" -gt 0 ]; then
+            echo "has_apps=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_apps=false" >> $GITHUB_OUTPUT
+          fi
+
+  build-and-push:
+    name: Build ${{ matrix.app }} (${{ needs.detect.outputs.publish_type }})
+    needs: detect
+    if: needs.detect.outputs.has_apps == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.detect.outputs.apps) }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compute tags
+        id: tags
+        run: |
+          PUBLISH_TYPE="${{ needs.detect.outputs.publish_type }}"
+          REGISTRY="ghcr.io/${{ github.repository }}"
+          APP="${{ matrix.app }}"
+          if [ "$PUBLISH_TYPE" = "stable" ]; then
+            VERSION=$(node -p "require('./apps/$APP/package.json').version")
+            echo "tags=$REGISTRY/$APP:$VERSION,$REGISTRY/$APP:latest" >> $GITHUB_OUTPUT
+            echo "check_tag=$VERSION" >> $GITHUB_OUTPUT
+          else
+            SHA="${GITHUB_SHA::7}"
+            echo "tags=$REGISTRY/$APP:sha-$SHA,$REGISTRY/$APP:unstable" >> $GITHUB_OUTPUT
+            echo "check_tag=sha-$SHA" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check if image already exists
+        id: check
+        continue-on-error: true
+        run: |
+          if docker manifest inspect ghcr.io/${{ github.repository }}/${{ matrix.app }}:${{ steps.tags.outputs.check_tag }} > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: docker/build-push-action@v6
+        if: steps.check.outputs.exists != 'true'
+        with:
+          context: .
+          file: ./apps/${{ matrix.app }}/Dockerfile
+          push: true
+          tags: ${{ steps.tags.outputs.tags }}
