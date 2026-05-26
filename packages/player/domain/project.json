@@ -1,0 +1,23 @@
+{
+  "name": "player-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/player/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain", "scope:player"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/packages/player/domain"],
+      "options": {
+        "command": "npx tsc -p packages/player/domain/tsconfig.lib.json"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "{projectRoot}"
+      }
+    }
+  }
+}
