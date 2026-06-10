@@ -12,6 +12,7 @@
     "player-domain": "workspace:*",
     "player-application": "workspace:*",
     "player-infrastructure": "workspace:*",
+    "player-interface-adapters": "workspace:*",
     "shared-infrastructure": "workspace:*"
   }
 }

@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 /** @type {import('eslint').Linter.Config[]} */
 const config = [
   {
-    ignores: ["node_modules/**", "dist/**", ".nx/**", "coverage/**", "tmp/**"],
+    ignores: ["node_modules/**", "dist/**", ".nx/**", "coverage/**", "tmp/**", "**/*.d.ts", "**/vite.config.ts"],
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
@@ -74,9 +74,9 @@ const config = [
         // Applications
         //
         {
-          type: "app",
-          pattern: "apps/*/src/**",
-          capture: ["appName"],
+          type: "frontend",
+          mode: "folder",
+          pattern: "apps/frontend",
         },
         {
           type: "acceptance-tests",
@@ -130,44 +130,25 @@ const config = [
           default: "disallow",
 
           rules: [
-            //
-            // Shared infrastructure
-            //
-            {
-              from: ["shared"],
-              allow: [],
-            },
-
-            //
-            // Domain
-            //
             {
               from: ["domain"],
-              allow: [["domain", { bc: "${from.bc}" }]],
+              allow: ["shared", ["domain", { bc: "${from.bc}" }]],
             },
 
-            //
-            // Application
-            //
             {
               from: ["application"],
               allow: [
+                "shared",
                 ["domain", { bc: "${from.bc}" }],
                 ["application", { bc: "${from.bc}" }],
               ],
             },
 
-            //
-            // Interface Adapters
-            //
             {
               from: ["interface-adapters"],
-              allow: [["application", { bc: "${from.bc}" }]],
+              allow: ["shared", ["application", { bc: "${from.bc}" }]],
             },
 
-            //
-            // Infrastructure
-            //
             {
               from: ["infrastructure"],
               allow: [
@@ -177,12 +158,12 @@ const config = [
                 ["interface-adapters", { bc: "${from.bc}" }],
               ],
             },
-
-            //
-            // Composition roots
-            //
             {
-              from: ["app"],
+              from: ["shared"],
+              allow: ["shared"],
+            },
+            {
+              from: ["acceptance-tests"],
               allow: [
                 "shared",
                 "domain",
@@ -192,10 +173,9 @@ const config = [
               ],
             },
             {
-              from: ["acceptance-tests"],
+              from: ["frontend"],
               allow: [
                 "shared",
-                "acceptance-tests",
                 "domain",
                 "application",
                 "interface-adapters",

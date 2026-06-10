@@ -1,22 +1,11 @@
-import type {
-  RegisterPlayerRequestModel,
-  RegisterPlayerUseCase,
-} from "player-application/use-cases";
-import type { RegisterPlayerRequest } from "../requests";
+import type { AuthenticatePlayerUseCase } from "player-application/use-cases";
 
-export class PlayerController {
+export class AuthenticatePlayerController {
   constructor(
-    protected readonly registerPlayerUseCase: RegisterPlayerUseCase,
+    protected readonly authenticatePlayerUseCase: AuthenticatePlayerUseCase,
   ) {}
 
-  async handlePlayerRegistration(
-    request: RegisterPlayerRequest,
-    externalAccountId: string,
-  ): Promise<void> {
-    const requestModel: RegisterPlayerRequestModel = {
-      nickname: request.nickname,
-      externalAccountId,
-    };
-    return await this.registerPlayerUseCase.execute(requestModel);
+  async handle(): Promise<void> {
+    return await this.authenticatePlayerUseCase.execute();
   }
 }

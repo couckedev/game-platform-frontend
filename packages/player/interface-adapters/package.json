@@ -6,10 +6,14 @@
   "types": "./src/index.ts",
   "exports": {
     "./controllers": "./src/controllers/index.ts",
-    "./requests": "./src/requests/index.ts"
+    "./requests": "./src/requests/index.ts",
+    "./presenters": "./src/presenters/index.ts",
+    "./view-models": "./src/view-models/index.ts"
   },
   "dependencies": {
-    "player-application": "workspace:*"
+    "player-application": "workspace:*",
+    "shared-application": "workspace:*",
+    "shared-interface-adapters": "workspace:*"
   },
   "devDependencies": {
     "vitest": "^4.1.4"

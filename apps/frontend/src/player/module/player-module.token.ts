@@ -1,0 +1,1 @@
+export const PLAYER_MODULE = Symbol('PLAYER_MODULE')
