@@ -1,0 +1,30 @@
+{
+  "name": "@shared/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./design-system/*": {
+      "import": "./src/design-system/*/index.ts"
+    },
+    "./design-system/foundations": {
+      "style": "./src/design-system/foundations/index.css"
+    },
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    }
+  },
+  "dependencies": {
+    "@fontsource/inter": "catalog:",
+    "@fontsource/manrope": "catalog:",
+    "@headlessui/vue": "catalog:",
+    "@shared/infrastructure": "workspace:*",
+    "class-variance-authority": "catalog:",
+    "lucide-vue-next": "catalog:",
+    "tailwind-merge": "catalog:",
+    "vee-validate": "catalog:",
+    "vue-router": "catalog:"
+  }
+}

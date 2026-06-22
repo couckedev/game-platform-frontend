@@ -3,18 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/frontend/src",
-  "tags": [
-    "type:application"
-  ],
-  "targets": {
-    "build": {
-      "outputs": [
-        "{projectRoot}/{options.outDir}",
-        "{workspaceRoot}/dist/apps/frontend"
-      ],
-      "options": {
-        "outDir": "../../dist/apps/frontend"
-      }
-    }
-  }
+  "// targets": "to see all targets run: nx show project frontend --web",
+  "targets": {}
 }

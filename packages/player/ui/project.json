@@ -1,0 +1,12 @@
+{
+  "name": "player-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/player/ui/src",
+  "projectType": "library",
+  "implicitDependencies": [
+    "player-infrastructure",
+    "player-interface-adapters"
+  ],
+  "targets": {},
+  "tags": ["type:library"]
+}

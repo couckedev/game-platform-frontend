@@ -1,0 +1,38 @@
+{
+  "name": "@shared/infrastructure",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./testing": {
+      "import": "./src/testing/index.ts"
+    },
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    },
+    "./observability/*": {
+      "import": "./src/observability/*/index.ts"
+    },
+    "./components": {
+      "import": "./src/components/index.ts"
+    },
+    "./authentication/*": {
+      "import": "./src/authentication/*/index.ts"
+    },
+    "./stores/*": {
+      "import": "./src/stores/*/index.ts"
+    },
+    "./http/*": {
+      "import": "./src/http/*/index.ts"
+    }
+  },
+  "dependencies": {
+    "@types/axios": "catalog:",
+    "axios": "catalog:",
+    "keycloak-js": "catalog:",
+    "vue-router": "catalog:",
+    "@tanstack/store": "catalog:"
+  }
+}

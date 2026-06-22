@@ -1,0 +1,16 @@
+{
+  "name": "@player/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    }
+  },
+  "dependencies": {
+    "@player/infrastructure": "workspace:*",
+    "@player/interface-adapters": "workspace:*",
+    "@shared/ui": "workspace:*",
+    "@tanstack/vue-store": "catalog:"
+  }
+}

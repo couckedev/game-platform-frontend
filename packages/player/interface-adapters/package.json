@@ -1,0 +1,19 @@
+{
+  "name": "@player/interface-adapters",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./features/*": {
+      "import": "./src/features/*/index.ts"
+    },
+    "./view-models/*": {
+      "import": "./src/view-models/*/index.ts"
+    }
+  },
+  "dependencies": {
+    "@player/application": "workspace:*"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@player/infrastructure",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./src/index.ts",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./adapters": {
+      "import": "./src/adapters/index.ts"
+    },
+    "./testing": {
+      "import": "./src/testing/index.ts"
+    },
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    },
+    "./stores/*": {
+      "import": "./src/stores/*/index.ts"
+    }
+  },
+  "dependencies": {
+    "@player/interface-adapters": "workspace:*",
+    "@shared/infrastructure": "workspace:*",
+    "@tanstack/store": "catalog:"
+  },
+  "devDependencies": {
+    "@types/axios": "catalog:",
+    "axios": "catalog:"
+  }
+}

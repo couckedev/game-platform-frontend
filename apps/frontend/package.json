@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@game-platform/shared-kernels": "workspace:*",
-    "@game-platform/bc-test-lib": "workspace:*"
+    "@headlessui/vue": "catalog:",
+    "@player/ui": "workspace:*",
+    "@shared/ui": "workspace:*"
   }
 }
