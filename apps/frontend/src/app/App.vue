@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { TestValueObject } from "@game-platform/bc-test-lib";
-import { SharedValueObject } from "@game-platform/shared-kernels";
-import { RouterLink, RouterView } from "vue-router";
 
-const testValueObject = new TestValueObject();
-const sharedValueObject = new SharedValueObject();
 </script>
 
 <template>

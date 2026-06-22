@@ -1,0 +1,16 @@
+{
+  "name": "@player/interface-adapters",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@player/domain": "workspace:*",
+    "@player/application": "workspace:*",
+    "@couckedev/cqrs-core": "catalog:"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "player-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/player/domain/src",
+  "projectType": "library",
+  "tags": ["layer:domain", "scope:player"],
+  "implicitDependencies": ["shared-kernels"],
+
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "outputPath": "packages/player/domain/dist",
+        "main": "packages/player/domain/src/index.ts",
+        "tsConfig": "packages/player/domain/tsconfig.build.json",
+        "rootDir": "packages/player/domain/src",
+        "assets": []
+      }
+    },
+    "test": {},
+    "test:mutation": {},
+    "test:coverage": {},
+    "typecheck": {}
+  }
+}

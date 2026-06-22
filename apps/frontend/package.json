@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@game-platform/shared-kernels": "workspace:*",
-    "@game-platform/bc-test-lib": "workspace:*"
+    "@shared/kernels": "workspace:*",
+    "@couckedev/cqrs-core": "catalog:"
   }
 }

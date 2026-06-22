@@ -1,0 +1,29 @@
+{
+  "name": "player-interface-adapters",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+
+  "sourceRoot": "packages/player/interface-adapters/src",
+
+  "projectType": "library",
+
+  "tags": ["layer:interface-adapters", "scope:player"],
+
+  "implicitDependencies": ["player-application"],
+
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "outputPath": "packages/player/interface-adapters/dist",
+        "main": "packages/player/interface-adapters/src/index.ts",
+        "tsConfig": "packages/player/interface-adapters/tsconfig.build.json",
+        "rootDir": "packages/player/interface-adapters/src",
+        "assets": []
+      }
+    },
+    "test": {},
+    "test:coverage": {},
+    "typecheck": {}
+  }
+}

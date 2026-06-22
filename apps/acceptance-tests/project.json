@@ -2,7 +2,12 @@
   "name": "acceptance-tests",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": [],
+  "implicitDependencies": [
+    "player-domain",
+    "player-application",
+    "player-interface-adapters",
+    "player-infrastructure"
+  ],
   "targets": {
     "start": {
       "executor": "nx:run-commands",

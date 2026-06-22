@@ -1,5 +1,5 @@
-import router from '../router';
 import { mount } from '@vue/test-utils';
+import router from '../router';
 import App from './App.vue';
 
 describe('App', () => {
