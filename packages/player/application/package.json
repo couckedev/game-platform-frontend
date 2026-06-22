@@ -1,0 +1,16 @@
+{
+  "name": "@player/application",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./features/*": {
+      "import": "./src/features/*/index.ts"
+    }
+  },
+  "dependencies": {
+    "@player/domain": "workspace:*"
+  }
+}

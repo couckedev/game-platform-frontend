@@ -3,18 +3,46 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/frontend/src",
-  "tags": [
-    "type:application"
-  ],
   "targets": {
     "build": {
-      "outputs": [
-        "{projectRoot}/{options.outDir}",
-        "{workspaceRoot}/dist/apps/frontend"
-      ],
+      "executor": "nx:run-commands",
       "options": {
-        "outDir": "../../dist/apps/frontend"
+        "cwd": "{projectRoot}",
+        "command": "vite build"
+      }
+    },
+    "dev": {
+      "continuous": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vite"
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vite"
+      }
+    },
+    "preview": {
+      "continuous": true,
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vite preview"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "vue-tsc --noEmit -p tsconfig.app.json"
       }
     }
-  }
+  },
+  "tags": ["type:application"]
 }

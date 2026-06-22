@@ -1,0 +1,22 @@
+{
+  "name": "@player/domain",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./entities": {
+      "import": "./src/entities/index.ts"
+    },
+    "./events": {
+      "import": "./src/events/index.ts"
+    },
+    "./ports": {
+      "import": "./src/ports/index.ts"
+    },
+    "./value-objects": {
+      "import": "./src/value-objects/index.ts"
+    }
+  }
+}

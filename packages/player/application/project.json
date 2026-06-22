@@ -1,0 +1,27 @@
+{
+  "name": "player-application",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+
+  "sourceRoot": "packages/player/application/src",
+
+  "projectType": "library",
+
+  "tags": ["layer:application", "scope:player"],
+
+  "implicitDependencies": ["player-domain"],
+
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "outputPath": "packages/player/application/dist",
+        "main": "packages/player/application/src/index.ts",
+        "tsConfig": "packages/player/application/tsconfig.build.json",
+        "rootDir": "packages/player/application/src",
+        "assets": []
+      }
+    },
+    "typecheck": {}
+  }
+}

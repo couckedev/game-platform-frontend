@@ -1,29 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2022"],
-    "types": ["node"],
-    "sourceMap": true,
-    "declaration": true,
+    "target": "es2022",
+    "module": "preserve",
+    "moduleResolution": "bundler", // lit le champ exports des package.json
+    "lib": ["es2015", "es2022", "esnext", "dom"],
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": true,
-    "noUncheckedIndexedAccess": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true,
-    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": false,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "importHelpers": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["node_modules", "dist", "tmp"]
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false,
+    "resolvePackageJsonExports": true // explicite, true par défaut avec bundler
+  }
 }

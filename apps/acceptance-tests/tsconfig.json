@@ -1,9 +1,4 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "rootDir": "..",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
   "include": ["src/**/*.ts"]
 }

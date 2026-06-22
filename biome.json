@@ -1,18 +1,18 @@
 {
-  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.0/schema.json",
 
   "files": {
     "includes": [
       "**",
-      "!!.nx",
+      "!.nx",
       "!**/dist",
       "!!coverage",
-      "!!eslint.config.mjs",
       "!apps/acceptance-tests/reports",
       "!**/.stryker-tmp",
       "!**/reports",
       "!**/coverage",
-      "!static"
+      "!static",
+      "!**/*.svg"
     ]
   },
 
@@ -36,5 +36,15 @@
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     }
+  },
+
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+
+  "html": {
+    "experimentalFullSupportEnabled": true
   }
 }

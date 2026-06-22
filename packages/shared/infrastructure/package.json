@@ -1,0 +1,23 @@
+{
+  "name": "@shared/infrastructure",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    },
+    "./design-system/vuejs": {
+      "import": "./src/design-system/vuejs/index.ts"
+    },
+    "./design-system/foundations": {
+      "style": "./src/design-system/foundations/index.css"
+    }
+  },
+  "dependencies": {
+    "@types/axios": "catalog:",
+    "axios": "catalog:",
+    "keycloak-js": "catalog:",
+    "vue-router": "catalog:",
+    "@tanstack/store": "catalog:"
+  }
+}
