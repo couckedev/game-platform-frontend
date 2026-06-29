@@ -4,7 +4,15 @@
   "projectType": "application",
   "sourceRoot": "apps/frontend/src",
   "tags": ["type:application"],
+  "implicitDependencies": ["player-infrastructure"],
   "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": true,
+        "commands": ["nx watch-deps frontend", "nx serve frontend"]
+      }
+    },
     "build": {
       "outputs": [
         "{projectRoot}/{options.outDir}",

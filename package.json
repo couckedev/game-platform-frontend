@@ -6,7 +6,8 @@
     "lint": "biome check .",
     "lint:fix": "biome check . --write --unsafe",
     "format": "biome format . --write",
-    "clean:hard": "find . \\( -name dist -o -name node_modules -o -name .nx \\) -type d -prune -exec rm -rf {} +"
+    "clean:hard": "find . \\( -name dist -o -name node_modules -o -name .nx \\) -type d -prune -exec rm -rf {} +",
+    "boundaries": "depcruise packages --config .dependency-cruiser.cjs"
   },
   "engines": {
     "node": ">=22",
@@ -20,18 +21,20 @@
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@nx/js": "catalog:",
-    "@nx/vite": "catalog:",
     "@nx/vue": "catalog:",
     "@nx/web": "catalog:",
     "@stryker-mutator/core": "catalog:",
     "@stryker-mutator/vitest-runner": "catalog:",
     "@swc/helpers": "catalog:",
+    "@tailwindcss/vite": "catalog:",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vue/test-utils": "catalog:",
+    "dependency-cruiser": "^18.0.0",
     "esbuild": "catalog:",
     "jiti": "catalog:",
     "nx": "catalog:",
+    "tailwindcss": "catalog:",
     "tsx": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

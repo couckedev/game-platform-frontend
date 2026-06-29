@@ -1,16 +1,41 @@
 {
   "name": "@shared/infrastructure",
-  "version": "0.0.1",
-  "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "private": true,
-  "dependencies": {
-    "pinia": "catalog:"
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./cucumber": {
+      "types": "./dist/cucumber/index.d.ts",
+      "import": "./dist/cucumber/index.js"
+    },
+    "./vuejs": {
+      "types": "./dist/vuejs/index.d.ts",
+      "import": "./dist/vuejs/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./authentication": {
+      "types": "./dist/authentication/index.d.ts",
+      "import": "./dist/authentication/index.js"
+    },
+    "./http": {
+      "types": "./dist/http/index.d.ts",
+      "import": "./dist/http/index.js"
+    }
   },
-  "devDependencies": {
-    "@couckedev/cqrs-core": "catalog:",
+  "dependencies": {
     "@shared/interface-adapters": "workspace:*",
-    "@shared/kernels": "workspace:*"
+    "@types/axios": "^0.14.4",
+    "axios": "catalog:",
+    "inversify": "catalog:",
+    "keycloak-js": "catalog:",
+    "msw": "catalog:",
+    "pinia": "catalog:",
+    "vue-router": "catalog:"
   }
 }

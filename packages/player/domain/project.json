@@ -4,7 +4,7 @@
   "sourceRoot": "packages/player/domain/src",
   "projectType": "library",
   "tags": ["layer:domain", "scope:player"],
-  "implicitDependencies": ["shared-kernels"],
+  "implicitDependencies": [],
 
   "targets": {
     "build": {

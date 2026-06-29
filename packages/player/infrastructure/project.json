@@ -3,6 +3,13 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/player/infrastructure/src",
   "projectType": "library",
+  "tags": ["layer:infrastructure", "scope:player"],
+  "implicitDependencies": [
+    "player-domain",
+    "player-application",
+    "player-interface-adapters",
+    "shared-infrastructure"
+  ],
   "targets": {
     "test": {
       "executor": "nx:run-commands",
@@ -22,6 +29,5 @@
         "assets": []
       }
     }
-  },
-  "tags": ["type:library"]
+  }
 }

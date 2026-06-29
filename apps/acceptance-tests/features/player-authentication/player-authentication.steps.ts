@@ -1,32 +1,30 @@
 import assert from 'node:assert';
 import { Given, Then, When } from '@cucumber/cucumber';
-import { Player } from '@player/domain';
 import type { GamePlatformFrontendWorld } from '../../support/world.js';
 
 Given<GamePlatformFrontendWorld>(
   'user is authenticated with an external account',
   function () {
-    this.playerContext.providedExternalAccountId =
-      'current-external-account-id';
+    this.sharedContext.authenticateUser();
   },
 );
 
 Given<GamePlatformFrontendWorld>(
   'player exists on game platform for this user',
   function () {
-    this.playerContext.setCurrentPlayer(new Player('player-id', 'nickname'));
+    this.playerContext.setCurrentPlayer('nickname', 'player-id');
   },
 );
 
 When<GamePlatformFrontendWorld>(
   'player authentication is requested',
-  function () {
-    this.playerContext.requestAuthentication();
+  async function () {
+    await this.playerContext.requestAuthentication();
   },
 );
 
-Then<GamePlatformFrontendWorld>('player will be authenticated', function () {
-  assert.deepStrictEqual(this.playerContext.playerStore.playerAuthentication, {
+Then<GamePlatformFrontendWorld>('current player will be updated', function () {
+  assert.deepStrictEqual(this.playerContext.currentPlayerStore.viewModel, {
     status: 'AUTHENTICATED',
     currentPlayer: {
       nickname: this.playerContext.currentPlayer.nickname,

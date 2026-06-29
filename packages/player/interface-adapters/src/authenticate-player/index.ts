@@ -1,2 +1,3 @@
 export * from './authenticate-player.controller.js';
-export type * from './player-authentication.view-model.js';
+export * from './current-player.presenter.js';
+export type * from './current-player.view-model.js';

@@ -14,15 +14,26 @@
       "types": "./dist/adapters/index.d.ts",
       "import": "./dist/adapters/index.js"
     },
-    "./stores": {
-      "types": "./dist/stores/index.d.ts",
-      "import": "./dist/stores/index.js"
+    "./cucumber": {
+      "types": "./dist/cucumber/index.d.ts",
+      "import": "./dist/cucumber/index.js"
+    },
+    "./vuejs": {
+      "types": "./dist/vuejs/index.d.ts",
+      "import": "./dist/vuejs/index.js"
     }
   },
   "dependencies": {
-    "@player/domain": "workspace:*",
     "@player/application": "workspace:*",
-    "pinia": "catalog:",
-    "@couckedev/cqrs-core": "catalog:"
+    "@player/domain": "workspace:*",
+    "@player/interface-adapters": "workspace:*",
+    "@shared/infrastructure": "workspace:*",
+    "@shared/interface-adapters": "workspace:*",
+    "inversify": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.4",
+    "axios": "catalog:",
+    "pinia": "catalog:"
   }
 }

@@ -1,3 +1,3 @@
 export const PlayerApiRoutes = {
-  AUTHENTICATE: '/players/authenticate',
+  AUTHENTICATE: 'authenticate',
 } as const;

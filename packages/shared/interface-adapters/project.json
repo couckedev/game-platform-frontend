@@ -1,8 +1,13 @@
 {
   "name": "shared-interface-adapters",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+
   "sourceRoot": "packages/shared/interface-adapters/src",
+
   "projectType": "library",
+
+  "tags": ["layer:interface-adapters", "scope:shared"],
+
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -14,7 +19,9 @@
         "rootDir": "packages/shared/interface-adapters/src",
         "assets": []
       }
-    }
-  },
-  "tags": ["type:library"]
+    },
+    "test": {},
+    "test:coverage": {},
+    "typecheck": {}
+  }
 }

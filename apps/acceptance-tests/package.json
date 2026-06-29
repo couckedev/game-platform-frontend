@@ -9,11 +9,7 @@
     "tsx": "^4.21.0"
   },
   "dependencies": {
-    "@player/domain": "workspace:*",
-    "@player/application": "workspace:*",
-    "@player/interface-adapters": "workspace:*",
     "@player/infrastructure": "workspace:*",
-    "@couckedev/cqrs-core": "catalog:",
-    "pinia": "catalog:"
+    "@shared/infrastructure": "workspace:*"
   }
 }

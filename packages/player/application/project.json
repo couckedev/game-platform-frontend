@@ -8,11 +8,7 @@
 
   "tags": ["layer:application", "scope:player"],
 
-  "implicitDependencies": [
-    "player-domain",
-    "player-application",
-    "shared-kernels"
-  ],
+  "implicitDependencies": ["player-domain"],
 
   "targets": {
     "build": {

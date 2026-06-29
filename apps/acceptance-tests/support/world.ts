@@ -3,14 +3,16 @@ import {
   setWorldConstructor,
   World,
 } from '@cucumber/cucumber';
-import { PlayerContext } from './contexts/player.context.js';
-import type { Resettable } from './contexts/resettable.interface.js';
-import { SharedContext } from './contexts/shared.context.js';
+import { PlayerContext } from '@player/infrastructure/cucumber';
+import {
+  type Resettable,
+  SharedContext,
+} from '@shared/infrastructure/cucumber';
 
 export class GamePlatformFrontendWorld extends World {
   contexts: Resettable[] = [];
-  public readonly sharedContext: SharedContext;
   public readonly playerContext: PlayerContext;
+  public readonly sharedContext: SharedContext;
 
   constructor(options: IWorldOptions) {
     super(options);

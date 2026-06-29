@@ -1,4 +1,4 @@
-import { Player } from '@player/domain';
+import { Player } from '@player/domain/entities';
 import { describe, expect, it } from 'vitest';
 import { InMemoryPlayerRepository } from './in-memory-player-repository.adapter.js';
 

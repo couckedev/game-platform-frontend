@@ -3,7 +3,14 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@shared/kernels": "workspace:*",
-    "@couckedev/cqrs-core": "catalog:"
+    "@headlessui/vue": "catalog:",
+    "@player/infrastructure": "workspace:*",
+    "@player/ui": "workspace:*",
+    "@shared/design-system": "workspace:*",
+    "@shared/infrastructure": "workspace:*",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "vite-svg-loader": "^5.1.1"
   }
 }

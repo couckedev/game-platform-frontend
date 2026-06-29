@@ -1,0 +1,22 @@
+{
+  "name": "@shared/design-system",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./foundations": "./src/foundations/index.css",
+    "./tailwind": {
+      "style": "./src/tailwind/tailwind.css",
+      "default": "./src/tailwind/tailwind.css"
+    },
+    "./vuejs": "./src/vuejs/index.ts"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/manrope": "^5.2.8",
+    "@headlessui/vue": "catalog:",
+    "class-variance-authority": "^0.7.1",
+    "lucide-vue-next": "^1.0.0",
+    "tailwind-merge": "^3.6.0"
+  }
+}

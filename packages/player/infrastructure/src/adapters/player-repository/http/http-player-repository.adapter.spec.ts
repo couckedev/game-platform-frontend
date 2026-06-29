@@ -1,0 +1,33 @@
+import { Player } from '@player/domain';
+import {
+  AuthenticatedHttpClient,
+  FakeHttpClient,
+} from '@shared/infrastructure/http';
+import { describe, expect, it } from 'vitest';
+import { PlayerApiRoutes } from '../../../player-api/index.js';
+import { HttpPlayerRepository } from './http-player-repository.adapter.js';
+
+describe('Axios adapter for player repository', () => {
+  const httpClient = new FakeHttpClient();
+  const authenticatedHttpClient = new AuthenticatedHttpClient(httpClient, {
+    getAccessToken: async () => {
+      return 'access-token';
+    },
+  });
+  const playerRepository = new HttpPlayerRepository(authenticatedHttpClient);
+
+  describe('authenticate', () => {
+    it('should return authenticated player', async () => {
+      const response = {
+        playerId: 'playerId',
+        nickname: 'nickname',
+      } as const;
+      httpClient.registerGet(PlayerApiRoutes.AUTHENTICATE, response);
+
+      const player = playerRepository.getCurrentPlayer();
+
+      const expectedPlayer = new Player(response.playerId, response.nickname);
+      expect(player).resolves.toStrictEqual(expectedPlayer);
+    });
+  });
+});

@@ -10,6 +10,7 @@
   ],
   "targets": {
     "start": {
+      "dependsOn": ["^build"],
       "executor": "nx:run-commands",
       "options": {
         "command": "tsx node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -17,6 +18,7 @@
       }
     },
     "dry-run": {
+      "dependsOn": ["^build"],
       "executor": "nx:run-commands",
       "options": {
         "command": "tsx node_modules/@cucumber/cucumber/bin/cucumber.js --dry-run",

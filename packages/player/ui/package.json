@@ -1,0 +1,16 @@
+{
+  "name": "@player/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./player-authentication-": "./src/player-authentication/index.ts"
+  },
+  "dependencies": {
+    "@shared/design-system": "workspace:*",
+    "@shared/infrastructure": "workspace:*",
+    "@player/infrastructure": "workspace:*",
+    "vue-router": "catalog:",
+    "inversify": "catalog:"
+  }
+}

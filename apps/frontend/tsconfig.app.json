@@ -1,15 +1,19 @@
 {
   "extends": "./tsconfig.json",
+
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "../dist/out-tsc",
+
     "types": ["vite/client"]
   },
+
+  "include": ["src", "../../vue-shims.d.ts"],
+
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.vue",
     "src/**/*.test.vue"
-  ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.vue"]
+  ]
 }

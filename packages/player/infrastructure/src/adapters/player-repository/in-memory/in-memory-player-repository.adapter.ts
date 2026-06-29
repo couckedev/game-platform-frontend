@@ -1,4 +1,4 @@
-import type { Player } from '@player/domain/aggregates';
+import type { Player } from '@player/domain/entities';
 import type { PlayerRepository } from '@player/domain/ports';
 
 export class InMemoryPlayerRepository implements PlayerRepository {

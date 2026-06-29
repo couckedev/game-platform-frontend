@@ -16,5 +16,9 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "vue.server.hybridMode": true
 }
