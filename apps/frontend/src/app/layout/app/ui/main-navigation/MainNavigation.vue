@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HomeIcon, Link } from '@shared/design-system/vuejs';
+import { HomeIcon, Link } from '@shared/ui/design-system/vuejs';
 import { RouterLink } from 'vue-router';
 
 const items = [

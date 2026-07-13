@@ -2,6 +2,7 @@ import { Player } from '@player/domain';
 import {
   AuthenticatedHttpClient,
   FakeHttpClient,
+  HttpError,
 } from '@shared/infrastructure/http';
 import { describe, expect, it } from 'vitest';
 import { PlayerApiRoutes } from '../../../player-api/index.js';
@@ -28,6 +29,17 @@ describe('Axios adapter for player repository', () => {
 
       const expectedPlayer = new Player(response.playerId, response.nickname);
       expect(player).resolves.toStrictEqual(expectedPlayer);
+    });
+
+    it('should return null on 404 not found error', () => {
+      httpClient.registerGetError(
+        PlayerApiRoutes.AUTHENTICATE,
+        new HttpError(404, PlayerApiRoutes.AUTHENTICATE),
+      );
+
+      const player = playerRepository.getCurrentPlayer();
+
+      expect(player).resolves.toBeNull();
     });
   });
 });

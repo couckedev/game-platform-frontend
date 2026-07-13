@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@shared/design-system/foundations";
+@import "@shared/ui/design-system/foundations";
 @import "@fontsource/inter";
 
 @source "../../../packages";
@@ -21,6 +21,8 @@
   --color-primary-hover: var(--color-primary-hover);
   --color-neutral: var(--color-neutral);
   --color-neutral-hover: var(--color-neutral-hover);
+  --color-danger: var(--color-danger);
+  --color-success: var(--color-success);
 
   /* Fonts */
   --font-sans: var(--font-sans);

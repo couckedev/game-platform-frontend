@@ -1,18 +1,24 @@
-import type { HttpClient } from '../common/index.js';
+import type { HttpClient, HttpError } from '../common/index.js';
 
 export class FakeHttpClient implements HttpClient {
   private responses = new Map<string, unknown>();
+  private errors = new Map<string, unknown>();
 
   registerGet<Response>(url: string, response: Response): void {
     this.responses.set(`GET ${url}`, response);
   }
 
-  async get<Response>(url: string): Promise<Response> {
-    const response = this.responses.get(`GET ${url}`);
+  registerGetError(url: string, error: HttpError): void {
+    this.errors.set(`GET ${url}`, error);
+  }
 
-    if (!response) {
+  async get<Response>(url: string): Promise<Response> {
+    const error = this.errors.get(`GET ${url}`);
+    if (error) throw error;
+
+    const response = this.responses.get(`GET ${url}`);
+    if (!response)
       throw new Error(`No fake response registered for GET ${url}`);
-    }
 
     return response as Response;
   }

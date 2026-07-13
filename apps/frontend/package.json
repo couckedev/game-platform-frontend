@@ -6,7 +6,7 @@
     "@headlessui/vue": "catalog:",
     "@player/infrastructure": "workspace:*",
     "@player/ui": "workspace:*",
-    "@shared/design-system": "workspace:*",
+    "@shared/ui": "workspace:*",
     "@shared/infrastructure": "workspace:*",
     "vue-router": "catalog:"
   },

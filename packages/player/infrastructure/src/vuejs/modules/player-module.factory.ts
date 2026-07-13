@@ -29,7 +29,10 @@ export const createPlayerModule = (
   { playerApiBaseUrl }: PlayerModuleConfig,
 ): PlayerModule => {
   const container = new Container();
-  const playerApiAxiosInstance = axios.create({ baseURL: playerApiBaseUrl });
+  const playerApiAxiosInstance = axios.create({
+    baseURL: playerApiBaseUrl,
+    validateStatus: (status) => status >= 200 && status < 300,
+  });
   const playerApiHttpClient = new AxiosHttpClient(playerApiAxiosInstance);
   const authenticatedPlayerApiHttpClient = new AuthenticatedHttpClient(
     playerApiHttpClient,

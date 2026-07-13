@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BrandIcon } from '@shared/design-system';
+import { BrandIcon } from '@shared/ui/design-system/vuejs';
 
 </script>
 

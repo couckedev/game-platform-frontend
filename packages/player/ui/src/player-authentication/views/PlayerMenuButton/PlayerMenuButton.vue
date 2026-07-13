@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, ChevronDown, MenuButton } from '@shared/design-system/vuejs';
+import { Button, ChevronDown, MenuButton } from '@shared/ui/design-system/vuejs';
 import type { PlayerMenuButtonProps } from './player-menu-button-props.interface.js';
 
 defineProps<PlayerMenuButtonProps>()

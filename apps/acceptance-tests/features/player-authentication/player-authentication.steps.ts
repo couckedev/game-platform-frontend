@@ -16,6 +16,13 @@ Given<GamePlatformFrontendWorld>(
   },
 );
 
+Given<GamePlatformFrontendWorld>(
+  'no player exists on game platform for this user',
+  () => {
+    return;
+  },
+);
+
 When<GamePlatformFrontendWorld>(
   'player authentication is requested',
   async function () {
@@ -32,3 +39,13 @@ Then<GamePlatformFrontendWorld>('current player will be updated', function () {
     },
   });
 });
+
+Then<GamePlatformFrontendWorld>(
+  'player registration will be required',
+  function () {
+    assert.deepStrictEqual(this.playerContext.currentPlayerStore.viewModel, {
+      status: 'NOT_REGISTERED',
+      currentPlayer: null,
+    });
+  },
+);

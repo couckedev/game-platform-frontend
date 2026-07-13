@@ -15,14 +15,16 @@
   --color-primary-hover: var(--blue-500);
   --color-neutral: var(--gray-700);
   --color-neutral-hover: var(--gray-600);
+  --color-danger: var(--red-400);
+  --color-success: var(--green-400);
 
   /* Fonts */
   --font-sans: "Inter", sans-serif;
   --font-brand: "Manrope", sans-serif;
 
   /* Borders */
-  --color-border: var(--gray-100);
+  --color-border: var(--gray-400);
 }
 [data-theme="dark"] {
-  --color-background: var(--gray-800);
+  --color-background: var(--gray-200);
 }

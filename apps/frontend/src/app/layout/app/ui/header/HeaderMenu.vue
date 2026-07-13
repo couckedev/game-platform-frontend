@@ -5,7 +5,7 @@ import {
     Menu,
     MenuItem,
     MenuItems
-} from '@shared/design-system/vuejs';
+} from '@shared/ui/design-system/vuejs';
 import { useLogout } from '../../composables/index.js';
 
 const { logout } = useLogout();

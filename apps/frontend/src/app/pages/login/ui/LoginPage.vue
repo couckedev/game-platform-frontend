@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, GoogleIcon, Heading, Text } from '@shared/design-system';
+import { Button, GoogleIcon, Heading, Text } from '@shared/ui/design-system/vuejs';
 import { useLogin } from '../composables/index.js';
 
 const { login } = useLogin();

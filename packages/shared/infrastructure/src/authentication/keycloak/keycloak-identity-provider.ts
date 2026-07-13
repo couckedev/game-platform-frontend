@@ -3,7 +3,16 @@ import type { KeycloakLoginOptions } from 'keycloak-js';
 import type { IdentityProvider } from '../common/index.js';
 
 export class KeycloakIdentityProvider implements IdentityProvider {
-  constructor(private readonly keycloak: Keycloak) {}
+  private onAuthChangeCallback?: (isAuthenticated: boolean) => void;
+
+  constructor(private readonly keycloak: Keycloak) {
+    keycloak.onAuthSuccess = () => this.onAuthChangeCallback?.(true);
+    keycloak.onAuthLogout = () => this.onAuthChangeCallback?.(false);
+    keycloak.onAuthRefreshError = () => this.onAuthChangeCallback?.(false);
+    keycloak.onTokenExpired = () => {
+      keycloak.updateToken(30).catch(() => this.onAuthChangeCallback?.(false));
+    };
+  }
 
   async init() {
     await this.keycloak.init({
@@ -22,6 +31,10 @@ export class KeycloakIdentityProvider implements IdentityProvider {
       loginOptions.idpHint = options.provider;
     }
     await this.keycloak.login(loginOptions);
+  }
+
+  onAuthChange(callback: (isAuthenticated: boolean) => void): void {
+    this.onAuthChangeCallback = callback;
   }
 
   async logout(): Promise<void> {

@@ -4,13 +4,15 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./player-authentication-": "./src/player-authentication/index.ts"
+    "./player-authentication": "./src/player-authentication/index.ts",
+    "./player-registration": "./src/player-registration/index.ts"
   },
   "dependencies": {
-    "@shared/design-system": "workspace:*",
-    "@shared/infrastructure": "workspace:*",
     "@player/infrastructure": "workspace:*",
-    "vue-router": "catalog:",
-    "inversify": "catalog:"
+    "@shared/ui": "workspace:*",
+    "@shared/infrastructure": "workspace:*",
+    "inversify": "catalog:",
+    "vee-validate": "^4.15.1",
+    "vue-router": "catalog:"
   }
 }

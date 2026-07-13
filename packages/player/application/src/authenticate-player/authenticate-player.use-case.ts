@@ -21,15 +21,17 @@ export class AuthenticatePlayerUseCase {
     }
     const currentPlayer = await this.playerRepository.getCurrentPlayer();
     if (currentPlayer === null) {
-      return;
+      return this.authenticatePlayerOutput.present({
+        status: 'NOT_REGISTERED',
+        currentPlayer: null,
+      });
     }
-    const outputData: AuthenticatePlayerOutputData = {
+    return this.authenticatePlayerOutput.present({
       status: 'AUTHENTICATED',
       currentPlayer: {
         nickname: currentPlayer.nickname,
         playerId: currentPlayer.playerId,
       },
-    };
-    this.authenticatePlayerOutput.present(outputData);
+    });
   }
 }

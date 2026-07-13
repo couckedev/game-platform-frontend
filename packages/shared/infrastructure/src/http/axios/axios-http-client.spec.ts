@@ -2,6 +2,7 @@ import axios from 'axios';
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
+import { HttpError } from '../common/index.js';
 import { AxiosHttpClient } from './axios-http-client.js';
 
 describe('AxiosHttpClient', () => {
@@ -40,5 +41,20 @@ describe('AxiosHttpClient', () => {
       playerId: 'playerId',
       nickname: 'nickname',
     });
+  });
+
+  it('should throw common HttpError if axios error has been throw', () => {
+    const url = 'players/me';
+    const status = 500;
+    server.use(
+      http.get(
+        `${baseUrl}/players/me`,
+        () => new HttpResponse(null, { status }),
+      ),
+    );
+
+    const httpCall = () => httpClient.get(url);
+
+    expect(httpCall).rejects.toThrow(new HttpError(status, url));
   });
 });

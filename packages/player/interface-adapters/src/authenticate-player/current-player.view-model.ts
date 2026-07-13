@@ -7,6 +7,10 @@ export type CurrentPlayerViewModel =
       };
     }
   | {
+      status: 'NOT_REGISTERED';
+      currentPlayer: null;
+    }
+  | {
       status: 'UNAUTHENTICATED';
       currentPlayer: null;
     }

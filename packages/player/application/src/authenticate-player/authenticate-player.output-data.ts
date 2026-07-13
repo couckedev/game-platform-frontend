@@ -9,4 +9,8 @@ export type AuthenticatePlayerOutputData =
   | {
       status: 'UNAUTHENTICATED';
       currentPlayer: null;
+    }
+  | {
+      status: 'NOT_REGISTERED';
+      currentPlayer: null;
     };

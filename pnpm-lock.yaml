@@ -196,12 +196,12 @@ importers:
       '@player/ui':
         specifier: workspace:*
         version: link:../../packages/player/ui
-      '@shared/design-system':
-        specifier: workspace:*
-        version: link:../../packages/shared/design-system
       '@shared/infrastructure':
         specifier: workspace:*
         version: link:../../packages/shared/infrastructure
+      '@shared/ui':
+        specifier: workspace:*
+        version: link:../../packages/shared/ui
       vue-router:
         specifier: 'catalog:'
         version: 4.5.1(vue@3.5.22(typescript@5.9.2))
@@ -266,39 +266,21 @@ importers:
       '@player/infrastructure':
         specifier: workspace:*
         version: link:../infrastructure
-      '@shared/design-system':
-        specifier: workspace:*
-        version: link:../../shared/design-system
       '@shared/infrastructure':
         specifier: workspace:*
         version: link:../../shared/infrastructure
+      '@shared/ui':
+        specifier: workspace:*
+        version: link:../../shared/ui
       inversify:
         specifier: 'catalog:'
         version: 8.1.1(reflect-metadata@0.2.2)
+      vee-validate:
+        specifier: ^4.15.1
+        version: 4.15.1(vue@3.5.22(typescript@5.9.2))
       vue-router:
         specifier: 'catalog:'
         version: 4.5.1(vue@3.5.22(typescript@5.9.2))
-
-  packages/shared/design-system:
-    dependencies:
-      '@fontsource/inter':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/manrope':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@headlessui/vue':
-        specifier: 'catalog:'
-        version: 1.7.23(vue@3.5.22(typescript@5.9.2))
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
-      lucide-vue-next:
-        specifier: ^1.0.0
-        version: 1.0.0(vue@3.5.22(typescript@5.9.2))
-      tailwind-merge:
-        specifier: ^3.6.0
-        version: 3.6.0
 
   packages/shared/infrastructure:
     dependencies:
@@ -328,6 +310,36 @@ importers:
         version: 4.5.1(vue@3.5.22(typescript@5.9.2))
 
   packages/shared/interface-adapters: {}
+
+  packages/shared/ui:
+    dependencies:
+      '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/manrope':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@headlessui/vue':
+        specifier: 'catalog:'
+        version: 1.7.23(vue@3.5.22(typescript@5.9.2))
+      '@shared/infrastructure':
+        specifier: workspace:*
+        version: link:../infrastructure
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      lucide-vue-next:
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.22(typescript@5.9.2))
+      tailwind-merge:
+        specifier: ^3.6.0
+        version: 3.6.0
+      vee-validate:
+        specifier: ^4.15.1
+        version: 4.15.1(vue@3.5.22(typescript@5.9.2))
+      vue-router:
+        specifier: 'catalog:'
+        version: 4.5.1(vue@3.5.22(typescript@5.9.2))
 
 packages:
 
@@ -4037,6 +4049,11 @@ packages:
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
+
+  vee-validate@4.15.1:
+    resolution: {integrity: sha512-DkFsiTwEKau8VIxyZBGdO6tOudD+QoUBPuHj3e6QFqmbfCRj1ArmYWue9lEp6jLSWBIw4XPlDLjFIZNLdRAMSg==}
+    peerDependencies:
+      vue: ^3.4.26
 
   vite-svg-loader@5.1.1:
     resolution: {integrity: sha512-RPzcXA/EpKJA0585x58DBgs7my2VfeJ+j2j1EoHY4Zh82Y7hV4cR1fElgy2aZi85+QSrcLLoTStQ5uZjD68u+Q==}
@@ -8221,6 +8238,12 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  vee-validate@4.15.1(vue@3.5.22(typescript@5.9.2)):
+    dependencies:
+      '@vue/devtools-api': 7.7.10
+      type-fest: 4.41.0
+      vue: 3.5.22(typescript@5.9.2)
 
   vite-svg-loader@5.1.1(vue@3.5.22(typescript@5.9.2)):
     dependencies:
