@@ -1,1 +1,2 @@
-export * from './current-player-status/index.js';
+export * from './current-player/index.js';
+export * from './player-status/index.js';

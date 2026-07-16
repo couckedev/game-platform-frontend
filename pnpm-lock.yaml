@@ -190,15 +190,9 @@ importers:
       '@headlessui/vue':
         specifier: 'catalog:'
         version: 1.7.23(vue@3.5.22(typescript@5.9.2))
-      '@player/infrastructure':
-        specifier: workspace:*
-        version: link:../../packages/player/infrastructure
       '@player/ui':
         specifier: workspace:*
         version: link:../../packages/player/ui
-      '@shared/infrastructure':
-        specifier: workspace:*
-        version: link:../../packages/shared/infrastructure
       '@shared/ui':
         specifier: workspace:*
         version: link:../../packages/shared/ui
@@ -220,21 +214,12 @@ importers:
 
   packages/player/infrastructure:
     dependencies:
-      '@player/application':
-        specifier: workspace:*
-        version: link:../application
-      '@player/domain':
-        specifier: workspace:*
-        version: link:../domain
       '@player/interface-adapters':
         specifier: workspace:*
         version: link:../interface-adapters
       '@shared/infrastructure':
         specifier: workspace:*
         version: link:../../shared/infrastructure
-      '@shared/interface-adapters':
-        specifier: workspace:*
-        version: link:../../shared/interface-adapters
       inversify:
         specifier: ^8.1.1
         version: 8.1.1(reflect-metadata@0.2.2)
@@ -254,21 +239,15 @@ importers:
       '@player/application':
         specifier: workspace:*
         version: link:../application
-      '@player/domain':
-        specifier: workspace:*
-        version: link:../domain
-      '@shared/interface-adapters':
-        specifier: workspace:*
-        version: link:../../shared/interface-adapters
 
   packages/player/ui:
     dependencies:
       '@player/infrastructure':
         specifier: workspace:*
         version: link:../infrastructure
-      '@shared/infrastructure':
+      '@player/interface-adapters':
         specifier: workspace:*
-        version: link:../../shared/infrastructure
+        version: link:../interface-adapters
       '@shared/ui':
         specifier: workspace:*
         version: link:../../shared/ui
@@ -331,12 +310,18 @@ importers:
       lucide-vue-next:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.22(typescript@5.9.2))
+      pinia:
+        specifier: 'catalog:'
+        version: 3.0.0(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2))
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
       vee-validate:
         specifier: ^4.15.1
         version: 4.15.1(vue@3.5.22(typescript@5.9.2))
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.22(typescript@5.9.2)
       vue-router:
         specifier: 'catalog:'
         version: 4.5.1(vue@3.5.22(typescript@5.9.2))

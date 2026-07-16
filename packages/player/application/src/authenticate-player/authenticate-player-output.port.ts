@@ -1,5 +1,5 @@
 import type { AuthenticatePlayerOutputData } from './index.js';
 
-export interface AuthenticatePlayerOutput {
-  present(outputData: AuthenticatePlayerOutputData): void;
-}
+export type AuthenticatePlayerOutput = (
+  outputData: AuthenticatePlayerOutputData,
+) => void;

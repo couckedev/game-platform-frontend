@@ -1,5 +1,8 @@
-import type { HttpClientOptions } from './http-client-options.interface.js';
+import type { HttpClientRequestOptions } from './http-client-request-options.interface.js';
 
 export interface HttpClient {
-  get<Response>(url: string, options: HttpClientOptions): Promise<Response>;
+  get<Response>(
+    url: string,
+    options: HttpClientRequestOptions,
+  ): Promise<Response>;
 }

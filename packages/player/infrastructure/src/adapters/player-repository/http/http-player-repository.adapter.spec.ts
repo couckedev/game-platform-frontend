@@ -1,11 +1,11 @@
-import { Player } from '@player/domain';
+import { Player } from '@player/interface-adapters/features/authenticate-player';
 import {
   AuthenticatedHttpClient,
   FakeHttpClient,
   HttpError,
 } from '@shared/infrastructure/http';
 import { describe, expect, it } from 'vitest';
-import { PlayerApiRoutes } from '../../../player-api/index.js';
+import { PlayerApiRoutes } from '../../../http/player-api/index.js';
 import { HttpPlayerRepository } from './http-player-repository.adapter.js';
 
 describe('Axios adapter for player repository', () => {

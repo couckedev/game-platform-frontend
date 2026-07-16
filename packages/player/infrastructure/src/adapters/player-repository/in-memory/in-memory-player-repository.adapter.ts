@@ -1,5 +1,7 @@
-import type { Player } from '@player/domain/entities';
-import type { PlayerRepository } from '@player/domain/ports';
+import type {
+  Player,
+  PlayerRepository,
+} from '@player/interface-adapters/features/authenticate-player';
 
 export class InMemoryPlayerRepository implements PlayerRepository {
   public currentPlayer: Player | null = null;

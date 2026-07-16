@@ -1,10 +1,10 @@
-export const getEnv = <TReturn>(
-  key: string,
-  failIfNotFound: boolean = false,
-): TReturn => {
-  const value = import.meta.env[key];
-  if (failIfNotFound && value === undefined) {
-    throw new Error(`Env var ${key} has not been set`);
-  }
-  return value;
-};
+import { getEnv } from './get-env.js';
+
+export const AppConfig = {
+  keycloak: {
+    clientId: getEnv<string>('VITE_KEYCLOAK_CLIENT_ID', true),
+    realm: getEnv<string>('VITE_KEYCLOAK_REALM', true),
+    url: getEnv<string>('VITE_KEYCLOAK_URL', true),
+  },
+  playerApiBaseUrl: getEnv<string>('VITE_PLAYER_API_BASE_URL', true),
+} as const;

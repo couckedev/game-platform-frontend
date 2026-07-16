@@ -3,17 +3,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
     "./cucumber": {
       "types": "./dist/cucumber/index.d.ts",
       "import": "./dist/cucumber/index.js"
-    },
-    "./vuejs": {
-      "types": "./dist/vuejs/index.d.ts",
-      "import": "./dist/vuejs/index.js"
     },
     "./components": {
       "types": "./dist/components/index.d.ts",

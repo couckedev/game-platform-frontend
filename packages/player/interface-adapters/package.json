@@ -3,18 +3,16 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+    "./features/*": {
+      "types": "./dist/features/*/index.d.ts",
+      "import": "./dist/features/*/index.js"
     },
-    "./authenticate-player": {
-      "types": "./dist/authenticate-player/index.d.ts",
-      "import": "./dist/authenticate-player/index.js"
+    "./projections/*": {
+      "types": "./dist/projections/*/index.d.ts",
+      "import": "./dist/projections/*/index.js"
     }
   },
   "dependencies": {
-    "@player/domain": "workspace:*",
-    "@player/application": "workspace:*",
-    "@shared/interface-adapters": "workspace:*"
+    "@player/application": "workspace:*"
   }
 }

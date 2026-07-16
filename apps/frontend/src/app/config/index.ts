@@ -1,1 +1,1 @@
-export * from './app.config.js';
+export * from './get-env.js';

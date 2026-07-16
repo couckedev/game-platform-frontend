@@ -18,17 +18,18 @@
       "types": "./dist/cucumber/index.d.ts",
       "import": "./dist/cucumber/index.js"
     },
-    "./vuejs": {
-      "types": "./dist/vuejs/index.d.ts",
-      "import": "./dist/vuejs/index.js"
+    "./http": {
+      "types": "./dist/http/index.d.ts",
+      "import": "./dist/http/index.js"
+    },
+    "./stores": {
+      "types": "./dist/stores/index.d.ts",
+      "import": "./dist/stores/index.js"
     }
   },
   "dependencies": {
-    "@player/application": "workspace:*",
-    "@player/domain": "workspace:*",
     "@player/interface-adapters": "workspace:*",
     "@shared/infrastructure": "workspace:*",
-    "@shared/interface-adapters": "workspace:*",
     "inversify": "^8.1.1"
   },
   "devDependencies": {

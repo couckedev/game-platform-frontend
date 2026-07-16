@@ -14,13 +14,6 @@ export class KeycloakIdentityProvider implements IdentityProvider {
     };
   }
 
-  async init() {
-    await this.keycloak.init({
-      onLoad: 'check-sso',
-      messageReceiveTimeout: 2000,
-    });
-  }
-
   get isAuthenticated(): boolean {
     return this.keycloak.authenticated;
   }

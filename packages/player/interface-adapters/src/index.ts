@@ -1,1 +1,2 @@
-export * from './authenticate-player/index.js';
+export * from './features/index.js';
+export * from './projections/index.js';

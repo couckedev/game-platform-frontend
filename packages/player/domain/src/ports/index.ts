@@ -1,2 +1,2 @@
-export type * from './player-repository.port.js';
-export type * from './user-authentication-checker.port.js';
+export type { PlayerRepository } from './player-repository.port.js';
+export type { UserAuthenticationChecker } from './user-authentication-checker.port.js';

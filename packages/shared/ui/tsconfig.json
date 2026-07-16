@@ -1,4 +1,9 @@
 {
   "extends": "../../../tsconfig.vue.json",
-  "include": ["src/**/*.ts", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "../../../vue-shims.d.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }

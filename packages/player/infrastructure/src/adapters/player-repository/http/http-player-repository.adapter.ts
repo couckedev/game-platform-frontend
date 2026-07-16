@@ -1,5 +1,7 @@
-import { Player } from '@player/domain/entities';
-import type { PlayerRepository } from '@player/domain/ports';
+import {
+  Player,
+  type PlayerRepository,
+} from '@player/interface-adapters/features/authenticate-player';
 import {
   type AuthenticatedHttpClient,
   HttpError,
@@ -7,7 +9,7 @@ import {
 import {
   PlayerApiRoutes,
   type PlayerAuthenticatedResponse,
-} from '../../../player-api/index.js';
+} from '../../../http/player-api/index.js';
 
 export class HttpPlayerRepository implements PlayerRepository {
   constructor(

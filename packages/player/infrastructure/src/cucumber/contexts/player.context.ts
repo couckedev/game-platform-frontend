@@ -1,11 +1,10 @@
-import { Player } from '@player/domain';
-import type { CurrentPlayerViewModel } from '@player/interface-adapters';
+import { Player } from '@player/interface-adapters/features/authenticate-player';
+import type { CurrentPlayerStore } from '@player/interface-adapters/projections/current-player';
 import {
   InitializationError,
   type Resettable,
   type SharedContext,
 } from '@shared/infrastructure/cucumber';
-import type { ReadonlyViewModelStore } from '@shared/interface-adapters';
 import {
   createPlayerTestingModule,
   type PlayerTestingModule,
@@ -20,7 +19,7 @@ export class PlayerContext implements Resettable {
     });
   }
 
-  get currentPlayerStore(): ReadonlyViewModelStore<CurrentPlayerViewModel> {
+  get currentPlayerStore(): CurrentPlayerStore {
     return this.playerModule.currentPlayerStore;
   }
 

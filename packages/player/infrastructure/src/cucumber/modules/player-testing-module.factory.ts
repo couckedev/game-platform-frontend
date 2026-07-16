@@ -1,9 +1,9 @@
-import { AuthenticatePlayerUseCase } from '@player/application';
 import {
   AuthenticatePlayerController,
-  CurrentPlayerPresenter,
-} from '@player/interface-adapters';
-import { InMemoryIdentityProvider } from '@shared/infrastructure';
+  type AuthenticatePlayerOutput,
+  AuthenticatePlayerUseCase,
+} from '@player/interface-adapters/features/authenticate-player';
+import { CurrentPlayerPresenter } from '@player/interface-adapters/projections/current-player';
 import { InMemoryPlayerRepository } from '../../adapters/index.js';
 import { InMemoryCurrentPlayerStore } from '../../stores/index.js';
 import type { PlayerTestingModule } from './player-testing-module.interface.js';
@@ -15,10 +15,13 @@ export const createPlayerTestingModule = ({
   const playerRepository = new InMemoryPlayerRepository();
   const currentPlayerStore = new InMemoryCurrentPlayerStore();
   const currentPlayerPresenter = new CurrentPlayerPresenter(currentPlayerStore);
+  const authenticatePlayerOutput: AuthenticatePlayerOutput = (outputData) => {
+    currentPlayerPresenter.present(outputData);
+  };
   const authenticatePlayerUseCase = new AuthenticatePlayerUseCase(
     userAuthenticationChecker,
     playerRepository,
-    currentPlayerPresenter,
+    authenticatePlayerOutput,
   );
   const authenticatePlayerController = new AuthenticatePlayerController(
     authenticatePlayerUseCase,

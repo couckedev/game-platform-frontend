@@ -3,10 +3,6 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
     "./authenticate-player": {
       "types": "./dist/authenticate-player/index.d.ts",
       "import": "./dist/authenticate-player/index.js"

@@ -3,19 +3,33 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./forms/vuejs": {
-      "import": "./src/forms/vuejs/index.ts"
+    "./forms/*": {
+      "import": "./src/forms/*/index.ts"
     },
-    "./design-system/vuejs": {
-      "import": "./src/design-system/vuejs/index.ts"
+    "./design-system/*": {
+      "import": "./src/design-system/*/index.ts"
     },
     "./design-system/foundations": {
       "style": "./src/design-system/foundations/index.css"
+    },
+    "./stores/*": {
+      "import": "./src/stores/*/index.ts"
+    },
+    "./authentication/*": {
+      "import": "./src/authentication/*/index.ts"
+    },
+    "./http/*": {
+      "import": "./src/http/*/index.ts"
+    },
+    "./composition/*": {
+      "import": "./src/composition/*/index.ts"
     }
   },
   "dependencies": {
     "@shared/infrastructure": "workspace:*",
+    "vue": "catalog:",
     "vue-router": "catalog:",
+    "pinia": "catalog:",
     "vee-validate": "^4.15.1",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/manrope": "^5.2.8",
