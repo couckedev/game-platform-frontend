@@ -3,6 +3,10 @@
   "private": true,
   "type": "module",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./features/*": {
       "types": "./dist/features/*/index.d.ts",
       "import": "./dist/features/*/index.js"

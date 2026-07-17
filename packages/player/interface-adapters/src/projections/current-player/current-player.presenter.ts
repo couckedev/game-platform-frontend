@@ -1,12 +1,13 @@
-import type { AuthenticatePlayerOutputData } from '@player/application/authenticate-player';
-import type { CurrentPlayerStore } from '../../projections/current-player/index.js';
+import type { AuthenticatePlayerOutputData } from '@player/application/features/authenticate-player';
+import type { CurrentPlayerViewModel } from './current-player.view-model.js';
+import { toCurrentPlayerViewModel } from './current-player-view-model.mapper.js';
 
 export class CurrentPlayerPresenter {
-  constructor(private readonly storeWriter: CurrentPlayerStore) {}
+  constructor(
+    private readonly write: (viewModel: CurrentPlayerViewModel) => void,
+  ) {}
 
   present(outputData: AuthenticatePlayerOutputData): void {
-    this.storeWriter.write({
-      currentPlayer: outputData.currentPlayer,
-    });
+    this.write(toCurrentPlayerViewModel(outputData));
   }
 }

@@ -1,4 +1,4 @@
-import { Player } from '@player/interface-adapters/features/authenticate-player';
+import { Player } from '@player/interface-adapters';
 import {
   AuthenticatedHttpClient,
   FakeHttpClient,

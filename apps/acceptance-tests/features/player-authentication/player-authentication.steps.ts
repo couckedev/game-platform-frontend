@@ -5,7 +5,7 @@ import type { GamePlatformFrontendWorld } from '../../support/world.js';
 Given<GamePlatformFrontendWorld>(
   'user is authenticated with an external account',
   function () {
-    this.sharedContext.authenticateUser();
+    this.sharedContext.loginUser();
   },
 );
 
@@ -26,13 +26,16 @@ Given<GamePlatformFrontendWorld>(
 When<GamePlatformFrontendWorld>(
   'player authentication is requested',
   async function () {
-    await this.playerContext.requestAuthentication();
+    await this.playerContext.authenticate();
   },
 );
 
 Then<GamePlatformFrontendWorld>('current player will be updated', function () {
-  assert.deepStrictEqual(this.playerContext.currentPlayerStore.viewModel, {
-    status: 'AUTHENTICATED',
+  assert(
+    this.playerContext.currentPlayer !== null,
+    'Current player has not been set in player repository',
+  );
+  assert.deepStrictEqual(this.playerContext.currentPlayerViewModel, {
     currentPlayer: {
       nickname: this.playerContext.currentPlayer.nickname,
       playerId: this.playerContext.currentPlayer.playerId,
@@ -41,11 +44,15 @@ Then<GamePlatformFrontendWorld>('current player will be updated', function () {
 });
 
 Then<GamePlatformFrontendWorld>(
-  'player registration will be required',
+  'authentication status will be updated',
   function () {
-    assert.deepStrictEqual(this.playerContext.currentPlayerStore.viewModel, {
-      status: 'NOT_REGISTERED',
-      currentPlayer: null,
+    assert(
+      this.playerContext.currentPlayer !== null,
+      'Current player has not been set in player repository',
+    );
+    assert.deepStrictEqual(this.playerContext.authenticationStatusViewModel, {
+      isAuthenticated: true,
+      isRegistered: true,
     });
   },
 );

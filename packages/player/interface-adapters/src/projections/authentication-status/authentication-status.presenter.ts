@@ -1,26 +1,13 @@
-import type { AuthenticatePlayerOutputData } from '@player/application/authenticate-player';
-import type { AuthenticationStatusStore } from './authentication-status-store.port.js';
+import type { AuthenticatePlayerOutputData } from '@player/application/features/authenticate-player';
+import type { AuthenticationStatusViewModel } from './authentication-status.view-model.js';
+import { toAuthenticationStatusViewModel } from './authentication-status-view-model.mapper.js';
 
 export class AuthenticationStatusPresenter {
-  constructor(private readonly storeWriter: AuthenticationStatusStore) {}
+  constructor(
+    private readonly write: (viewModel: AuthenticationStatusViewModel) => void,
+  ) {}
 
   present(outputData: AuthenticatePlayerOutputData): void {
-    if (outputData.status === 'UNAUTHENTICATED') {
-      this.storeWriter.write({
-        isAuthenticated: false,
-      });
-    }
-    if (outputData.status === 'NOT_REGISTERED') {
-      this.storeWriter.write({
-        isAuthenticated: true,
-        isRegistered: false,
-      });
-    }
-    if (outputData.status === 'AUTHENTICATED') {
-      this.storeWriter.write({
-        isAuthenticated: true,
-        isRegistered: true,
-      });
-    }
+    this.write(toAuthenticationStatusViewModel(outputData));
   }
 }

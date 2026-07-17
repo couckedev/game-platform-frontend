@@ -254,6 +254,9 @@ importers:
       inversify:
         specifier: 'catalog:'
         version: 8.1.1(reflect-metadata@0.2.2)
+      pinia:
+        specifier: 'catalog:'
+        version: 3.0.0(typescript@5.9.2)(vue@3.5.22(typescript@5.9.2))
       vee-validate:
         specifier: ^4.15.1
         version: 4.15.1(vue@3.5.22(typescript@5.9.2))

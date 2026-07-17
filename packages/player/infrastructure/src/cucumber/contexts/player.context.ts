@@ -1,46 +1,45 @@
-import { Player } from '@player/interface-adapters/features/authenticate-player';
-import type { CurrentPlayerStore } from '@player/interface-adapters/projections/current-player';
-import {
-  InitializationError,
-  type Resettable,
-  type SharedContext,
-} from '@shared/infrastructure/cucumber';
-import {
-  createPlayerTestingModule,
-  type PlayerTestingModule,
-} from '../modules/index.js';
+// player.context.ts
+
+import { Player } from '@player/interface-adapters';
+import type { IdentityProvider } from '@shared/infrastructure/authentication';
+import type { Resettable } from '@shared/infrastructure/cucumber';
+import { bootstrapPlayer } from '../bootstrap/index.js';
 
 export class PlayerContext implements Resettable {
-  private playerModule: PlayerTestingModule;
+  private bootstrap: ReturnType<typeof bootstrapPlayer>;
 
-  constructor(_sharedContext: SharedContext) {
-    this.playerModule = createPlayerTestingModule({
-      userAuthenticationChecker: _sharedContext.sharedModule.identityProvider,
+  constructor(identityProvider: IdentityProvider) {
+    this.bootstrap = bootstrapPlayer({
+      userAuthenticationChecker: identityProvider,
     });
   }
 
-  get currentPlayerStore(): CurrentPlayerStore {
-    return this.playerModule.currentPlayerStore;
-  }
-
-  async requestAuthentication(): Promise<void> {
-    await this.playerModule.authenticatePlayerController.handle();
+  async authenticate(): Promise<void> {
+    await this.bootstrap.authenticatePlayer.controller.handle();
   }
 
   setCurrentPlayer(nickname: string, playerId: string) {
-    this.playerModule.playerRepository.currentPlayer = new Player(
+    this.bootstrap.playerRepository.currentPlayer = new Player(
       playerId,
       nickname,
     );
   }
 
-  get currentPlayer(): Player {
-    const currentPlayer = this.playerModule.playerRepository.currentPlayer;
-    if (currentPlayer === null) {
-      throw new InitializationError('currentPlayer');
-    }
-    return currentPlayer;
+  get currentPlayerViewModel() {
+    return this.bootstrap.currentPlayerPresenter.viewModel;
   }
 
-  reset(): void | Promise<void> {}
+  get authenticationStatusViewModel() {
+    return this.bootstrap.authenticationStatusPresenter.viewModel;
+  }
+
+  get currentPlayer(): Player | null {
+    return this.bootstrap.playerRepository.currentPlayer;
+  }
+
+  reset(): void {
+    this.bootstrap.currentPlayerPresenter.reset();
+    this.bootstrap.authenticationStatusPresenter.reset();
+    this.bootstrap.playerRepository.currentPlayer = null;
+  }
 }

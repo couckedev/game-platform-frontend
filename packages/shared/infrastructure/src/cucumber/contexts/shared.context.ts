@@ -1,16 +1,22 @@
-import {
-  createSharedTestingModule,
-  type SharedTestingModule,
-} from '../modules/index.js';
+import type { IdentityProvider } from '../../authentication/index.js';
+import { bootstrapShared } from '../bootstrap/index.js';
 
 export class SharedContext {
-  public readonly sharedModule: SharedTestingModule;
+  public readonly bootstrap: ReturnType<typeof bootstrapShared>;
 
-  constructor(_sharedContext: SharedContext) {
-    this.sharedModule = createSharedTestingModule();
+  constructor() {
+    this.bootstrap = bootstrapShared();
   }
 
-  authenticateUser(): void {
-    this.sharedModule.identityProvider.setAuthenticated(true);
+  loginUser(): void {
+    this.bootstrap.identityProvider.login();
+  }
+
+  logoutUser(): void {
+    this.bootstrap.identityProvider.logout();
+  }
+
+  get identityProvider(): IdentityProvider {
+    return this.bootstrap.identityProvider;
   }
 }

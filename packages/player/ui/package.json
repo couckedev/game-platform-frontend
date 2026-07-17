@@ -14,6 +14,7 @@
     "@shared/ui": "workspace:*",
     "inversify": "catalog:",
     "vee-validate": "^4.15.1",
-    "vue-router": "catalog:"
+    "vue-router": "catalog:",
+    "pinia": "catalog:"
   }
 }

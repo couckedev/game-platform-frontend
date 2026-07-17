@@ -3,9 +3,13 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./authenticate-player": {
-      "types": "./dist/authenticate-player/index.d.ts",
-      "import": "./dist/authenticate-player/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./features/*": {
+      "types": "./dist/*/index.d.ts",
+      "import": "./dist/*/index.js"
     }
   },
   "dependencies": {

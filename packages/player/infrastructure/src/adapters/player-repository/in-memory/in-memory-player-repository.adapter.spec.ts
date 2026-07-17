@@ -1,4 +1,4 @@
-import { Player } from '@player/interface-adapters/features/authenticate-player';
+import { Player } from '@player/interface-adapters';
 import { describe, expect, it } from 'vitest';
 import { InMemoryPlayerRepository } from './in-memory-player-repository.adapter.js';
 

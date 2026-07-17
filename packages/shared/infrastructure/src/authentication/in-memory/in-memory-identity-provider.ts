@@ -1,8 +1,14 @@
-export class InMemoryIdentityProvider {
+import type { IdentityProvider } from '../common/index.js';
+
+export class InMemoryIdentityProvider implements IdentityProvider {
   private _authenticated = false;
 
-  setAuthenticated(authenticated: boolean) {
-    this._authenticated = authenticated;
+  async login(): Promise<void> {
+    this._authenticated = true;
+  }
+
+  async logout(): Promise<void> {
+    this._authenticated = false;
   }
 
   get isAuthenticated(): boolean {

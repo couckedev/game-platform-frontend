@@ -17,7 +17,7 @@ export class GamePlatformFrontendWorld extends World {
   constructor(options: IWorldOptions) {
     super(options);
     this.sharedContext = new SharedContext();
-    this.playerContext = new PlayerContext(this.sharedContext);
+    this.playerContext = new PlayerContext(this.sharedContext.identityProvider);
     this.contexts.push(this.playerContext);
   }
 

@@ -1,8 +1,7 @@
 export {
-  type AuthenticatePlayerOutput,
+  type AuthenticatePlayerOutputBoundary,
+  type AuthenticatePlayerOutputData,
   AuthenticatePlayerUseCase,
-  Player,
-  type PlayerRepository,
-  type UserAuthenticationChecker,
-} from '@player/application/authenticate-player';
+} from '@player/application/features/authenticate-player';
 export { AuthenticatePlayerController } from './authenticate-player.controller.js';
+export { AuthenticatePlayerOutput } from './authenticate-player-output.adapter.js';

@@ -8,17 +8,17 @@ import { CurrentPlayerPresenter } from '@player/interface-adapters/projections/c
 import { useAuthentication } from '@shared/ui/authentication/vuejs';
 import type { App } from 'vue';
 import { usePlayerRepository } from '@/vuejs/http/player-repository/index.js';
-import { useCurrentPlayerStore } from '@/vuejs/stores/current-player/index.js';
-import { useAuthenticationStatusStore } from '@/vuejs/stores/index.js';
+import { useCurrentPlayerWriter } from '@/vuejs/stores/current-player/index.js';
+import { useAuthenticationStatusWriter } from '@/vuejs/stores/index.js';
 import { PLAYER_AUTHENTICATION } from './player-authentication.token.js';
 
 export function providePlayerAuthentication(app: App) {
   const { identityProvider } = useAuthentication();
   const currentPlayerPresenter = new CurrentPlayerPresenter(
-    useCurrentPlayerStore(),
+    useCurrentPlayerWriter(),
   );
   const authenticationStatusPresenter = new AuthenticationStatusPresenter(
-    useAuthenticationStatusStore(),
+    useAuthenticationStatusWriter(),
   );
   const authenticatePlayerOutput: AuthenticatePlayerOutput = (outputData) => {
     currentPlayerPresenter.present(outputData);

@@ -1,2 +1,5 @@
-export * from './features/index.js';
-export * from './projections/index.js';
+export {
+  Player,
+  type PlayerRepository,
+  type UserAuthenticationChecker,
+} from '@player/application';

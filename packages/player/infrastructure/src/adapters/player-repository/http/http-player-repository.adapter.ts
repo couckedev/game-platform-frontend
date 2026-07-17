@@ -1,7 +1,4 @@
-import {
-  Player,
-  type PlayerRepository,
-} from '@player/interface-adapters/features/authenticate-player';
+import { Player, type PlayerRepository } from '@player/interface-adapters';
 import {
   type AuthenticatedHttpClient,
   HttpError,
