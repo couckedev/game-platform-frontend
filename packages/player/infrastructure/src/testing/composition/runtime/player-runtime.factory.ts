@@ -16,6 +16,7 @@ export function createPlayerRuntime(
 
   return {
     playerRepository,
+    userAuthenticationChecker: dependencies.authentication.identityProvider,
     playerStore,
   };
 }

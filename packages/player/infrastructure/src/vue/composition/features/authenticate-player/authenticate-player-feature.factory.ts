@@ -26,6 +26,7 @@ export function createAuthenticatePlayerFeature(playerRuntime: PlayerRuntime) {
     currentPlayerWriter,
   );
   const useCase = new AuthenticatePlayerUseCase(
+    playerRuntime.userAuthenticationChecker,
     playerRuntime.playerRepository,
     authenticatePlayerPresenter,
   );

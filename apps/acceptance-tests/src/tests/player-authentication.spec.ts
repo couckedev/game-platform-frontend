@@ -30,4 +30,15 @@ describe('Player authentication', () => {
       isAuthenticated: true,
     });
   });
+
+  it('handles an unauthenticated user', async () => {
+    sharedTesting.setUserAsUnauthenticated();
+
+    await playerPublic.features.authenticatePlayer();
+
+    expect(playerPublic.viewModels.authenticationStatus.get()).toStrictEqual({
+      isLoading: false,
+      isAuthenticated: false,
+    });
+  });
 });
